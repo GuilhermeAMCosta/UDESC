@@ -1,0 +1,537 @@
+{
+  "summary": {
+    "title": "SPC - Sistema de Prevenção de Crédito",
+    "description": "Uma versão simplificada de um sistema de bureau de crédito. Apenas dois tipos de usuários são considerados (consumidor e cliente). As funcionalidades básicas do sistema são consulta de situação de crédito e registro de informações de crédito. Os dados são armazenados em um BD que pode ou não ser local ao servidor web.",
+    "owner": "Rafael Obelheiro"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "Aplicação",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0,
+        "$$hashKey": "object:116",
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 20,
+                "y": 50
+              },
+              "angle": 0,
+              "id": "53b8451d-7bcc-4009-a665-01d954dfbc19",
+              "z": 1,
+              "hasOpenThreats": false,
+              "description": "Consumidor que consulta sua própria situação de crédito",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Consumidor"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 310,
+                "y": 40
+              },
+              "angle": 0,
+              "id": "ef1bd4f8-a07d-47fc-aa0f-e4131cbf1737",
+              "z": 2,
+              "hasOpenThreats": false,
+              "description": "",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "sistema\nSPC"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 503,
+                "y": 227
+              },
+              "angle": 0,
+              "id": "a7a3a2fe-3872-477f-a34e-49e2b90cf4c8",
+              "z": 4,
+              "hasOpenThreats": false,
+              "description": "BD de informações de crédito",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Info crédito"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 180,
+                "y": 70
+              },
+              "target": {
+                "x": 310,
+                "y": 70
+              },
+              "vertices": [
+                {
+                  "x": 250,
+                  "y": 40
+                }
+              ],
+              "id": "f53e1fea-a516-4dcd-bdbf-9f05a6812d19",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.25965629651024724,
+                    "offset": -29.351695254628513
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "consulta situação",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 11,
+              "hasOpenThreats": false,
+              "protocol": "HTTP",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "description": "consulta situação de crédito",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "a7a3a2fe-3872-477f-a34e-49e2b90cf4c8"
+              },
+              "target": {
+                "id": "94f638ce-9bea-4f8e-8dcc-b581a89e9d4d"
+              },
+              "vertices": [
+                {
+                  "x": 621,
+                  "y": 179
+                }
+              ],
+              "id": "ecbacd6c-1a71-4c5a-80ed-b8603f064e66",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "dados",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 15,
+              "hasOpenThreats": false,
+              "description": "dados recuperados do BD",
+              "threats": [],
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "ef1bd4f8-a07d-47fc-aa0f-e4131cbf1737"
+              },
+              "target": {
+                "id": "53b8451d-7bcc-4009-a665-01d954dfbc19"
+              },
+              "vertices": [
+                {
+                  "x": 240,
+                  "y": 120
+                }
+              ],
+              "id": "9422c1de-a5c2-47e5-b51a-90ecc09c5dfd",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.664645100505742,
+                    "offset": -18.051027642496187
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "situação de crédito",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 16,
+              "hasOpenThreats": false,
+              "description": "Retorna a situação de crédito do consumidor",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 540,
+                "y": 25
+              },
+              "angle": 0,
+              "id": "94f638ce-9bea-4f8e-8dcc-b581a89e9d4d",
+              "z": 18,
+              "hasOpenThreats": false,
+              "description": "",
+              "threats": [],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "SGBD"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "94f638ce-9bea-4f8e-8dcc-b581a89e9d4d"
+              },
+              "target": {
+                "id": "ef1bd4f8-a07d-47fc-aa0f-e4131cbf1737"
+              },
+              "vertices": [
+                {
+                  "x": 470,
+                  "y": 130
+                }
+              ],
+              "id": "27e9ebaa-2d8f-4b35-9119-77f51d903fbb",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.22790438801538018,
+                    "offset": -15.49241439194422
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "dados",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 24,
+              "hasOpenThreats": false,
+              "description": "resposta do SGBD",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "ef1bd4f8-a07d-47fc-aa0f-e4131cbf1737"
+              },
+              "target": {
+                "id": "94f638ce-9bea-4f8e-8dcc-b581a89e9d4d"
+              },
+              "vertices": [
+                {
+                  "x": 470,
+                  "y": 40
+                }
+              ],
+              "id": "37827a82-3144-447f-892a-59203fb3f3fc",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.30082933127543193,
+                    "offset": -20.963635877446187
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "consulta SQL",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 29,
+              "hasOpenThreats": false,
+              "description": "requisição ao SGBD",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "94f638ce-9bea-4f8e-8dcc-b581a89e9d4d"
+              },
+              "target": {
+                "id": "a7a3a2fe-3872-477f-a34e-49e2b90cf4c8"
+              },
+              "vertices": [
+                {
+                  "x": 545,
+                  "y": 175
+                }
+              ],
+              "id": "6400cdf1-8a41-4524-8c91-bf4100df6e20",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "dados",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 30,
+              "hasOpenThreats": false,
+              "description": "dados salvos no BD",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 170,
+                "y": 236
+              },
+              "angle": 0,
+              "id": "ae491d2a-2b0c-4abe-b98b-ed2d4b34d2c5",
+              "z": 31,
+              "hasOpenThreats": false,
+              "description": "Cliente que consulta ou fornece informações de crédito sobre consumidores",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Cliente"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "ae491d2a-2b0c-4abe-b98b-ed2d4b34d2c5"
+              },
+              "target": {
+                "x": 321,
+                "y": 129
+              },
+              "vertices": [
+                {
+                  "x": 274,
+                  "y": 176
+                }
+              ],
+              "id": "d993e9fa-c327-4e97-9113-99a910202f1e",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.4104234904613992,
+                    "offset": -10.648186167009069
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "consulta/altera\nsituação",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 32,
+              "hasOpenThreats": false,
+              "description": "Consulta ou altera situação de crédito de um consumidor",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "ef1bd4f8-a07d-47fc-aa0f-e4131cbf1737"
+              },
+              "target": {
+                "x": 331,
+                "y": 233
+              },
+              "vertices": [],
+              "id": "a7552602-35f2-4a3e-abdf-6de4c5bc2d3b",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.3196034164545656,
+                    "offset": -43.71233836215435
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "situação de\ncrédito/ACK",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 33,
+              "hasOpenThreats": false,
+              "description": "Situação de crédito de consumidor (consulta), ou confirmação de modificação (alteração)",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            }
+          ]
+        },
+        "size": {
+          "height": 590,
+          "width": 2304
+        }
+      }
+    ]
+  }
+}
